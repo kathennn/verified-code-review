@@ -1,0 +1,32 @@
+{
+  "name": "verified-code-review",
+  "version": "0.1.0",
+  "description": "Evidence-first code review workflow skill for Claude Code",
+  "keywords": ["claude-code", "code-review", "verification", "developer-workflow"],
+  "homepage": "https://kathennn.github.io/verified-code-review/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kathennn/verified-code-review.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kathennn/verified-code-review/issues"
+  },
+  "author": "kathennn",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "verified-code-review": "bin/verified-code-review.js"
+  },
+  "files": [
+    "bin/",
+    "skills/verified-code-review/SKILL.md",
+    "plugin.json",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "prepublishOnly": "npm test"
+  }
+}

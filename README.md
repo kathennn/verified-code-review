@@ -10,10 +10,10 @@
   <a href="https://github.com/kathennn/verified-code-review/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/kathennn/verified-code-review?style=for-the-badge" /></a>
   <a href="https://github.com/kathennn/verified-code-review/commits/main"><img alt="Last commit" src="https://img.shields.io/github/last-commit/kathennn/verified-code-review?style=for-the-badge" /></a>
   <img alt="Status: early development" src="https://img.shields.io/badge/status-early%20development-orange?style=for-the-badge" />
-  <img alt="npm: planned" src="https://img.shields.io/badge/npm-publication%20planned-blueviolet?style=for-the-badge" />
+  <a href="https://www.npmjs.com/package/verified-code-review"><img alt="npm version" src="https://img.shields.io/npm/v/verified-code-review?style=for-the-badge" /></a>
 </p>
 
-> **Current status:** this repository contains the Verified Code Review skill and its plugin metadata. It is public source code, but it is **not published on npm yet**. The future goal is to make setup available through a simple `npx` command once the npm package and installer are implemented and tested.
+> **Current status:** the package provides a tested CLI installer for the Verified Code Review skill. Install it with `npx verified-code-review`.
 
 ## Why Verified Code Review?
 
@@ -45,28 +45,37 @@ It is designed for repositories where work is assisted by **Claude Code**. It en
 - `plugin.json` — plugin metadata and user-facing description.
 - `skills/verified-code-review/SKILL.md` — the complete workflow instructions.
 
-## Getting started today
+## Installation
 
-Until the planned npm installer is available, use the skill from this repository manually:
-
-1. Clone or download this repository.
-2. Copy `skills/verified-code-review/` into your Claude Code skills directory, for example `.claude/skills/verified-code-review/` in the target project (or the corresponding personal skills directory if you want it available across projects).
-3. Start or restart your Claude Code session if needed, then invoke the `verified-code-review` skill by name.
-4. Review the proposed setup plan before authorizing any repository changes. The workflow is intentionally approval-first.
-
-The exact skill discovery behavior can depend on your Claude Code version and configuration. Consult the official Claude Code documentation if your installation uses a different skills location.
-
-## Coming later: npm + `npx`
-
-The intended distribution experience is a command along these lines:
+Run this from the root of the project where you want to use the skill:
 
 ```bash
 npx verified-code-review
 ```
 
-This is a **planned interface, not a working command today**. Before publishing to npm, the project still needs a package manifest, a tested installer/CLI, clear installation and upgrade behavior, package metadata, and a release process. The installer should explain every file it creates and never silently overwrite existing project instructions or hooks.
+By default, the installer creates `.claude/skills/verified-code-review/SKILL.md` in the current project. To install it for your user account across projects:
 
-No npm package is currently published under this name. Do not rely on the command above until this README and the npm registry listing are updated to announce an actual release.
+```bash
+npx verified-code-review --global
+```
+
+Preview the destination without changing files:
+
+```bash
+npx verified-code-review --dry-run
+```
+
+Use `npx verified-code-review --help` to see all options. The installer never overwrites an existing `verified-code-review` skill directory; if one exists, it stops and leaves it untouched. After installation, restart or refresh Claude Code and invoke the `verified-code-review` skill.
+
+## Development
+
+```bash
+npm install
+npm test
+npm pack --dry-run
+```
+
+The CLI uses only Node.js built-ins and supports Node.js 18 or newer.
 
 ## Safety principles
 
