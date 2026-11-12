@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "verified-code-review",
+  "version": "0.1.0",
+  "description": "Evidence-first Claude Code workflow for independently reviewing changes, enforcing verification hooks, and testing developer understanding before approval.",
+  "keywords": ["claude-code", "code-review", "verification", "git-hooks", "testing", "developer-workflow"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Verified Code Review",
+        "shortDescription": "Evidence-first code reviews",
+        "longDescription": "Set up and follow a rigorous Claude Code repository workflow: inspect project guidance, clarify requirements, isolate reviewer context, run real checks, block unverified pushes, and test the developer's understanding of each change.",
+        "developerName": "Plugin Creator",
+        "capabilities": [],
+        "defaultPrompt": "Help me set up and use an evidence-first Claude Code review workflow in my repository."
+      }
+    }
+  }
+}
